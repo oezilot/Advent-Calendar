@@ -208,7 +208,7 @@ initializeGrid();
 // ALERT-MESSAGE:
 // datenbank simulieren
 const toerchenContent = [
-    { id: 1, imageUrl: '/Advent-Calendar/images/kevin_hoch.jpg', titel: 'Kevin Allein zu Haus', extra: 'Bastelidee des Tages: <br><a target="_blank" href="https://tutorials-raspberrypi.de/ueberwachung-von-fenstern-und-tueren-mit-dem-raspberry-pi">Baue dein eigenes Überwachungssystem mit einem RaspberryPi</a>', videoLink:'https://www.nanoo.tv/link/v/2212352 '},
+    { id: 1, imageUrl: '/images/kevin_hoch.jpg', titel: 'Kevin Allein zu Haus', extra: 'Bastelidee des Tages: <br><a target="_blank" href="https://tutorials-raspberrypi.de/ueberwachung-von-fenstern-und-tueren-mit-dem-raspberry-pi">Baue dein eigenes Überwachungssystem mit einem RaspberryPi</a>', videoLink:'https://www.nanoo.tv/link/v/2212352 '},
     { id: 2, imageUrl: '/images/grinch_hoch.jpg', titel: 'Der Grinch', extra: 'Bastelidee des Tages: <br><a target="_blank" href="https://tutorials-raspberrypi.de/ueberwachung-von-fenstern-und-tueren-mit-dem-raspberry-pi">Adventzkranz zum Beginn der Adventszeit</a>', videoLink:'https://nanoo.tv/link/v/1905278' },
     { id: 3, imageUrl: '/images/kompass_hoch.jpg', titel: 'Der Goldene Kompass', extra: 'Fun Fact des Tages:<br>Dämonen wurden historisch als übernatürliche Wesen angesehen, die oft mit bösen Kräften verbunden waren und in vielen Kulturen als Verursacher von Krankheit, Unglück und moralischen Verfehlungen galten.', videoLink:'https://www.nanoo.tv/link/v/2101398' },
     { id: 4, imageUrl: '/images/geister_hoch.webp', titel: 'Die Geister, die ich rief', extra: 'Fun Fact des Tages:<br>In Europa glaubte man, dass Geister durch Spiegel erscheinen könnten, weshalb viele sie nachts abdeckten, um keine Seelen aus dem Jenseits anzulocken.', videoLink:'https://www.nanoo.tv/link/v/1368875' },
@@ -301,7 +301,7 @@ function update_current_day() {
     currentMonth = currentDate.getMonth();
 
     if (currentMonth < 12) {
-        currentDay = 12;
+        currentDay = 0;
     }
     if (currentMonth < 2) {
         currentDay = 25;
