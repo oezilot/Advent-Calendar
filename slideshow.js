@@ -301,7 +301,7 @@ function update_current_day() {
     currentMonth = currentDate.getMonth();
 
     if (currentMonth < 12) {
-        currentDay = 0;
+        currentDay = 12;
     }
     if (currentMonth < 2) {
         currentDay = 25;
