@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="slideshow.css">
+
+</head>
+<body>
+
+   <!-- Snow Effect Container -->
+   <div class="snow-container"></div>
+
+  <!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full bg-gray-800 shadow-md z-20 nav_bar_effects">
+
+  <div class="container mx-auto flex items-center justify-between p-4">
+    <!-- Back Button -->
+    <a
+      href="https://portal.nanoo.tv/de/login-nanoo-tv.html"
+      class="flex items-center text-white text-lg hover:text-red-400" style="font-size: large;"
+    >
+      <i class="fas fa-arrow-left mr-2"></i>
+      Back to Nanoo.tv
+    </a>
+
+    <!-- Burger Menu (Mobile Only) -->
+    <button
+      class="burger-menu text-2xl md:hidden focus:outline-none"
+      @click="toggleMenu"
+      aria-label="Toggle Navigation"
+      :aria-expanded="menuOpen"
+    >
+      <i :class="menuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+    </button>
+
+    <!-- Navigation Links -->
+    <div
+      :class="menuOpen ? 'flex flex-col absolute top-16 right-4 bg-gray-800 p-4 space-y-2 rounded-md shadow-lg md:space-x-6 md:flex-row md:relative md:top-0 md:right-0' : 'hidden'"
+      aria-hidden="!menuOpen"
+    >
+
+      <a
+        href="slideshow.html"
+        class="text-white hover:text-green-400 px-4 py-2" style="font-size: large;"
+      >
+        Adventskalender
+    </a>
+    </div>
+  </div>
+
+</nav>
+
+
+  <!-- Main Content -->
+  <main style="padding: 4rem;">
+    <h1 class="contributor_title">Mitwirkende am Weihnachtsprojekt</h1> 
+
+    <p class="contributor_text">
+      Das Team das die Webseite zusammengestellt hat.
+    </p>
+
+    <!-- Employee Cards -->
+    <div class="contributor_cards_container">
+      <!-- Employee 1 -->
+      <div class="contributor_card_man">
+        <img src="weihnachtsmütze_cyan_nanoo.png" alt="Jann Timcke" class="contributor_images">
+        <div style="padding: 1rem;">
+          <h2 style="font-size: 1.5rem; color: #333;">Jann Timcke</h2>
+          <p style="color: #555;">Backoffice & Sales</p>
+          <p style="color: #888;">Werft22 AG</p>
+        </div>
+        <div style="padding: 1rem;">
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#werft22AG</span>
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#sales</span>
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#backoffice</span>
+        </div>
+      </div>
+
+      <!-- Employee 2 -->
+      <div class="contributor_card_man">
+        <img src="weihnachtsmütze_cyan_nanoo.png" alt="Sven Weidenmann" class="contributor_images">
+        <div style="padding: 1rem;">
+          <h2 style="font-size: 1.5rem; color: #333;">Sven Weidenmann</h2>
+          <p style="color: #555;">Junior Applikationsentwickler Intern</p>
+          <p style="color: #888;">Werft22 AG</p>
+        </div>
+        <div style="padding: 1rem;">
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#werft22AG</span>
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#programmer</span>
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#ict</span>
+        </div>
+      </div>
+
+      <!-- Employee 3 -->
+      <div class="contributor_card_woman">
+        <img src="weihnachtsmütze_pink_nanoo.png" alt="Zoé Flumini" class="contributor_images">
+        <div style="padding: 1rem;">
+          <h2 style="font-size: 1.5rem; color: #333;">Zoé Flumini</h2>
+          <p style="color: #555;">Programmer Intern</p>
+          <p style="color: #888;">Werft22 AG</p>
+        </div>
+        <div style="padding: 1rem;">
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#werft22AG</span>
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#programmer</span>
+          <span style="background-color: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 15px;">#ux/ui</span>
+        </div>
+      </div>
+    </div>
+
+    
+  </main>
+
+ 
+     <!-- Footer -->
+     <footer class="footer bg-gray-800 py-4" style="padding: 20px;">
+      <div class="container_left mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <!-- Footer Links -->
+        <div class="flex space-x-4">
+          <a href="https://portal.nanoo.tv/de/datenschutzerklaerung.html" class="hover:underline">Datenschutz</a>
+          <a href="https://portal.nanoo.tv/de/impressum.html" class="hover:underline">Impressum</a>
+        </div>
+        <!-- Logo and Copyright -->
+        <div class=" container_right flex items-center space-x-2">
+          <span class="text-sm">&copy; 2024 Werft22 AG</span>
+          <img src="Logo_werft22.png" alt="Werft22 AG Logo" class="w-8 h-8">
+        </div>
+      </div>
+    </footer>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const snowContainer = document.querySelector(".snow-container");
+  
+    const maxSnowflakes = 150; // Max number of snowflakes on screen
+    const snowflakes = [];
+  
+    // Function to create a single snowflake
+    function createSnowflake() {
+      if (!snowContainer) return;
+  
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+  
+      // Randomize size, position, and fall duration
+      const size = Math.random() * 3 + 1; // Between 1px and 4px
+      const leftPosition = Math.random() * 100; // Position between 0% and 100% viewport width
+      const fallDuration = Math.random() * 5 + 3; // Between 3s and 8s
+  
+      // Style the snowflake
+      snowflake.style.width = `${size}px`;
+      snowflake.style.height = `${size}px`;
+      snowflake.style.position = "absolute";
+      snowflake.style.left = `${leftPosition}vw`;
+      snowflake.style.top = "-10vh"; // Start slightly above the viewport
+      snowflake.style.backgroundColor = "white";
+      snowflake.style.borderRadius = "50%";
+      snowflake.style.opacity = `${Math.random() * 0.8 + 0.2}`; // Random opacity between 0.2 and 1
+      snowflake.style.pointerEvents = "none";
+      snowflake.style.animation = `fall linear ${fallDuration}s`;
+  
+      // Append the snowflake to the container
+      snowContainer.appendChild(snowflake);
+      snowflakes.push(snowflake);
+  
+      // Remove the snowflake once the animation ends
+      setTimeout(() => {
+        snowflake.remove();
+        snowflakes.splice(snowflakes.indexOf(snowflake), 1);
+      }, fallDuration * 1000);
+    }
+  
+    // Function to generate snowflakes at intervals
+    function generateSnowflakes() {
+      if (snowflakes.length < maxSnowflakes) {
+        createSnowflake();
+      }
+      setTimeout(generateSnowflakes, 100); // Create a new snowflake every 100ms
+    }
+  
+    // Snowflake Animation Keyframes
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = `
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh);
+          opacity: 0.5;
+        }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+  
+    // Start generating snowflakes
+    generateSnowflakes();
+  });
+</script>
+
+</body>
+</html>

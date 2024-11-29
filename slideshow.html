@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="slideshow.css">
+    <script src="slideshow.js" defer></script>
+
+</head>
+<body >
+
+    <!-- Snow Effect Container -->
+  <div class="snow-container"></div>
+
+  <!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white shadow-md z-20 nav_bar_effects">
+
+  <div class="container mx-auto flex items-center justify-between p-4">
+    <!-- Back Button -->
+    <a
+
+      href="https://portal.nanoo.tv/de/login-nanoo-tv.html"
+      class="red flex items-center text-black " style="font-size: large;"
+    >
+      <i class="fas fa-arrow-left mr-2" target="_blank"></i>
+      Zurück zu nanoo.tv
+    </a>
+
+    <!-- Burger Menu (Mobile Only) -->
+    <button
+      class="burger-menu text-2xl md:hidden focus:outline-none"
+      @click="toggleMenu"
+      aria-label="Toggle Navigation"
+      :aria-expanded="menuOpen"
+    >
+      <i :class="menuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+    </button>
+
+    <!-- Navigation Links -->
+    <div
+      :class="menuOpen ? 'flex flex-col absolute top-16 right-4 bg-gray-800 p-4 space-y-2 rounded-md shadow-lg md:space-x-6 md:flex-row md:relative md:top-0 md:right-0' : 'hidden'"
+      aria-hidden="!menuOpen"
+    >
+    <!--
+      <a
+        href="../adventskalender/slideshow.html"
+        class="text-white hover:text-green-400 px-4 py-2" style="font-size: large;"
+      >
+        Adventskalender
+    </a>
+    -->
+    </div>
+  </div>
+
+</nav>
+  
+
+  <!-- Winterlandschaft mit Schnee-Hügel -->
+  <div class="absolute bottom-0 left-0 w-full h-32 z-10">
+    <div class="snow-hills"></div>
+  </div>
+
+  <!-- Sterne im Hintergrund -->
+  <div class="stars"></div>
+  
+
+    <div class="wrapper">
+        <button class="prev" id="prev"></button>
+        <div class="carousel-container">
+          <div class="carousel-container-ohneSlider">
+        <div class="locher shadow-oben">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+        </div>
+
+        <div class="carousel">
+            <div id="img-a" class="carousel-item" data-id="1"></div>
+            <div id="img-b" onclick="showAlert()" class="carousel-item" data-id="2"></div>
+            <div id="img-c" class="carousel-item"></div>
+        </div>
+        <div class="locher shadow-unten">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+        </div>
+      </div>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="24" step="1" class="slider" id="myRange">
+            </div>
+            <div class="sliderticks">
+              <!-- Dynamisch generierte Ticks von 1 bis 24 -->
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+              <span>15</span>
+              <span>16</span>
+              <span>17</span>
+              <span>18</span>
+              <span>19</span>
+              <span>20</span>
+              <span>21</span>
+              <span>22</span>
+              <span>23</span>
+              <span>24</span>
+            </div>      
+        </div>
+        <button class="next" id="next"></button>
+    </div>
+<!--hidden alert box-->
+<div id="customAlert">
+  <div class="alert-box">
+      <div class="message-header1">
+          <p id="titelMessage"></p>
+          <button class="closingBtn" onclick="closeAlert()">X</button>
+      </div>
+      <hr>
+      <div class="message-header">
+          <img id="imgMessage">
+          <div class="messageText">
+          <p id="extraMessage"></p>
+          <a  id="linkMessage" target="_blank"> -> Zum Film (Login notwendig!)</a>
+          </div>
+      </div>
+  </div>
+</div>
+<!--hidden alert-box-->
+<!--hidden error box-->
+<div id="error-message">
+  <div class="error-box">
+      <div class="messageHeader">
+          <p id="errorMessage"></p>
+          <button class="closingBtn" onclick="closeAlert()" data-id="3">X</button>
+      </div>
+  </div>
+</div>
+<!--hidden alert-box-->
+<!-- Bäume Links, Mitte und Rechts -->
+<div class="trees">
+  <img src="Tree.png" alt="Tree" class="tree left" >
+<img src="Tree.png" alt="Tree" class="tree middle" >
+<img src="Tree.png" alt="Tree" class="tree right" >
+ </div>
+
+     <!-- Footer -->
+  <footer class="footer bg-white" >
+    <div class="container_left mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <!-- Footer Links -->
+      <div class="flex space-x-4">
+        <a href="https://portal.nanoo.tv/de/datenschutzerklaerung.html" target="_blank" class="hover:underline">Datenschutz</a>
+        <a href="https://portal.nanoo.tv/de/impressum.html" class="hover:underline" target="_blank">Impressum</a>
+        <a href="Contributors.html" class="hover:underline" target="_blank">Contributors</a>
+      </div>
+      <!-- Logo and Copyright -->
+      <div class=" container_right flex items-center space-x-2">
+        <span class="text-sm">&copy; 2024 Werft22 AG</span>
+        <img src="Logo_werft22.png" alt="Werft22 AG Logo" class="w-8 h-8">
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        let menuOpen = false;
+
+        function redirectToLogin() {
+          window.location.href = "https://portal.nanoo.tv/de/login-nanoo-tv.html";
+        }
+        
+        function toggleMenu() {
+          menuOpen = !menuOpen;
+          const navLinks = document.querySelector('.nav_bar');
+          if (menuOpen) {
+            navLinks.classList.remove('hidden');
+            navLinks.classList.add('open');
+          } else {
+            navLinks.classList.remove('open');
+            navLinks.classList.add('hidden');
+          }
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const snowContainer = document.querySelector(".snow-container");
+          
+            const maxSnowflakes = 150; // Max number of snowflakes on screen
+            const snowflakes = [];
+          
+            // Function to create a single snowflake
+            function createSnowflake() {
+              if (!snowContainer) return;
+          
+              const snowflake = document.createElement("div");
+              snowflake.classList.add("snowflake");
+          
+              // Randomize size, position, and fall duration
+              const size = Math.random() * 3 + 1; // Between 1px and 4px
+              const leftPosition = Math.random() * 100; // Position between 0% and 100% viewport width
+              const fallDuration = Math.random() * 5 + 3; // Between 3s and 8s
+          
+              // Style the snowflake
+              snowflake.style.width = `${size}px`;
+              snowflake.style.height = `${size}px`;
+              snowflake.style.position = "absolute";
+              snowflake.style.left = `${leftPosition}vw`;
+              snowflake.style.top = "-10vh"; // Start slightly above the viewport
+              snowflake.style.backgroundColor = "white";
+              snowflake.style.borderRadius = "50%";
+              snowflake.style.opacity = `${Math.random() * 0.8 + 0.2}`; // Random opacity between 0.2 and 1
+              snowflake.style.pointerEvents = "none";
+              snowflake.style.animation = `fall linear ${fallDuration}s`;
+          
+              // Append the snowflake to the container
+              snowContainer.appendChild(snowflake);
+              snowflakes.push(snowflake);
+          
+              // Remove the snowflake once the animation ends
+              setTimeout(() => {
+                snowflake.remove();
+                snowflakes.splice(snowflakes.indexOf(snowflake), 1);
+              }, fallDuration * 1000);
+            }
+          
+            // Function to generate snowflakes at intervals
+            function generateSnowflakes() {
+              if (snowflakes.length < maxSnowflakes) {
+                createSnowflake();
+              }
+              setTimeout(generateSnowflakes, 100); // Create a new snowflake every 100ms
+            }
+          
+            // Snowflake Animation Keyframes
+            const styleSheet = document.createElement("style");
+            styleSheet.type = "text/css";
+            styleSheet.innerText = `
+              @keyframes fall {
+                0% {
+                  transform: translateY(-10vh);
+                  opacity: 1;
+                }
+                100% {
+                  transform: translateY(110vh);
+                  opacity: 0.5;
+                }
+              }
+            `;
+            document.head.appendChild(styleSheet);
+          
+            // Start generating snowflakes
+            generateSnowflakes();
+          });
+
+
+      </script>
+
+
+</body>
+</html>

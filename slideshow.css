@@ -1,0 +1,1064 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(48, 71, 139);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* padding: 0 10px; */
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+    margin:0;
+    z-index:1;
+    position:absolute;
+    top: 10vh; /* Position the first object */
+}
+button {
+    width: 45px;
+    height: 45px;
+    border-radius:50%;
+    text-align: center;
+    cursor: pointer;
+    visibility: visible;  /* Sicherstellen, dass der Button Platz im Layout behält */
+    border: none;
+    flex-shrink: 0;
+}
+.closingBtn {
+    background-color:red;
+    border-radius:50%;
+    color:white;
+    font-weight:900;
+}
+
+
+#next {
+    background:url('previous.png')no-repeat center center;
+    background-color:white;
+    background-size:110%;
+    transform: rotate(180deg);
+    z-index:-100;
+}
+#prev {
+    background: url('previous.png') no-repeat center center;
+    background-color:white;
+    background-size:110%;
+    z-index:-100;
+}
+#next:hover {
+  z-index:2;
+}
+#prev:hover {
+  z-index:2;
+}
+.messageText {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:start;
+  height:100%;
+  padding:2%;
+  text-align:start;
+}
+.carousel {
+    background-color: black;
+    padding: 1.5vh 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%; /* Abstand zwischen den divs */
+    width:100%;
+    z-index: 1000;
+}
+
+.carousel-item {
+    background-position: center center; /* 50% der Breite und Höhe */
+    width: 20vw;
+    height: 16vh;
+    background-size: 20vw 20vw;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 239, 96);
+    text-shadow: 2px 2px #000000;
+    font-size: 3rem;
+    border-radius: 10px;
+    visibility: visible; /* Standardmäßig sichtbar */
+    background-repeat: no-repeat;
+    background-size:  17vh; /* Ensures the image covers the entire container */
+  }
+
+
+.carousel-item.hidden {
+    visibility: hidden; /* Unsichtbar, aber nimmt weiterhin Platz ein */
+}
+
+
+
+.carousel-container {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:12px;
+    z-index:-99;
+    width:75vw;
+}
+.locher {
+    width:100%;
+    height:7vh;
+    background-color:black;
+    padding:14px;
+    gap:11px;
+    z-index:-2;
+
+
+    /* GRID */
+    display:grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+}
+.carousel-container-ohneSlider {
+    box-shadow: 0px 0px 90px 35px #ffc822;
+    z-index: -100;
+    width:100%;
+}
+.grid-item {
+    background-color:white;
+    border-radius:0.33rem;
+}
+#img-a, #img-c, #img-b {
+    opacity:0.5;
+    z-index:3;
+    background-color:white;
+    border: 4px solid black;
+}
+#img-a:hover, #img-c:hover {
+  opacity:1;
+}
+
+.slidecontainer {
+    width:100%;
+}
+#myRange {
+    width:100%;
+}
+
+
+/*alert BOX!!!*/
+/* Background overlay for the custom alert */
+#customAlert, #error-message {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
+    height:100%;
+    width:100%;
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    z-index:1000;
+  }
+
+  /* Style for the alert box container */
+  .alert-box {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-color: #fff;
+    border-radius: 4vh;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding:3vh 3%;
+    width: 50%;
+    z-index:100;
+    overflow: auto;     /* Scrollbalken erscheinen nur, wenn der Inhalt zu groß ist */
+  }
+  .error-box {
+    background-color:white;
+    border-radius: 8px;
+    padding:9px;
+    z-index:100;
+    width:50%;
+  }
+  .messageHeader {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:baseline;
+  }
+  hr {
+    width: 100%;
+  }
+  /* Alert box text */
+  .alert-box p {
+    font-size: 18px;
+  }
+  /* Style for the alert box when it's visible */
+  #customAlert.show, #error-message.show {
+    display: flex; /* Display the alert box */
+    opacity:1;
+    z-index:100;
+  }
+  .message-header, .message-header1 {
+    display:flex;
+    justify-content:space-evenly;
+    width:100%;
+  }
+  .message-header1 {
+    width:100%;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  .message-header {
+    display:flex;
+    align-items:start;
+    justify-content:flex-start;
+    height:35vh;
+  }
+  .message-header img {
+    height:100%;
+    object-fit: contain; /* Verhindert Verzerrung des Bildes */
+  }
+
+
+.error-box {
+    background-color:white;
+}
+
+
+
+/* Styling für den Slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, red 0%, #d3d3d3 0%);
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+  }
+  
+  input[type="range"]::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ff5733;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #ff5733;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: -99;
+  }
+  
+  .sliderticks {
+    display: flex;
+    justify-content: space-between;
+    padding:0 0.5%;
+    width:100%;
+    margin-top: -0.55%;
+    z-index:-100;
+    font-weight:700;
+  }
+  
+  .sliderticks span {
+    display: flex;
+    justify-content: center;
+    width: 3px;
+    height: 7px;
+    background: white;
+    line-height: 40px;
+    color:white;
+    z-index:-100;
+  }
+  .slidecontainer {
+    margin-top:10px;
+    z-index: -99; /* Sicherstellen, dass es unter der alertbox bleibt */
+    position: relative; /* Erforderlich für z-index */
+  }
+
+
+
+/*FAILED TRANSITION*/
+  #img-b {
+    transform: scale(1); /* Standard-Skalierung */
+  transition: transform 0.4s ease; /* Animationseffekt */
+    opacity: 1; /* Anfangszustand für ein sanftes Erscheinen */
+
+  }
+  
+  
+  #img-b:hover {
+    box-shadow: 4px 4px yellow;  
+  }
+
+
+/* responsive für grösse des carousels */
+@media screen and (max-width: 1150px) {
+  .message-header {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+}
+
+
+
+/* responsive für grösse des carousels */
+@media screen and (max-width: 700px) {
+  .carousel-item {
+      width: 120px;
+      height: 120px;
+  }
+  .alert-box {
+    height:auto;
+  }
+}
+
+
+
+/* HANDY-ANSICHT: gedrehter wrapper, */
+@media screen and (max-width: 550px) {
+
+  /*breite des wrappers verlägersn*/
+  .carousel-container {
+    width:75vh;
+  }
+  .locher {
+    padding:1%;
+  }
+.wrapper {
+  top: 33vh; /* Position the first object */
+}
+.next, .prev {
+  display:none;
+}
+
+.carousel {
+  justify-content:space-evenly;
+}
+.locher {
+  height: 3vh;
+}
+
+
+#img-a, #img-c {
+  transform: rotate(-90deg); /* Rotiert den gesamten Inhalt gegen den Uhrzeigersinn */
+  width: 13vh; /* Set consistent width */
+}
+#img-b {
+  transform: rotate(-90deg) scale(1.2); /* Transformation für kleinere Bildschirme */
+    transition: transform 0.4s ease; /* Gleiche Animation */
+  width: 13vh; /* Set consistent width */
+}
+
+.alert-box, .error-box {
+width:90vw;
+}
+.wrapper {
+  transform:rotate(90deg);
+}
+.slidecontainer {
+  margin:0;
+  padding:0;
+}
+
+body {
+  width: 100vw;
+  height:50vh;
+}
+
+
+}
+
+/* SVENS SACHEN */
+body {
+    background-color: rgb(48, 71, 139);
+  }
+  
+  
+  
+  a {
+      font-size: medium;
+  }
+  
+  
+  .home_welcome {
+      display: flex;
+      justify-content: center;
+      top: 20%;
+  }
+  
+  .home_welcome_home {
+      display: flex;
+      justify-content: center;
+      top: 20%;
+      color: white;
+  }
+  
+  .nav_bar {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 20px;
+      right: 10px;
+      font-size: medium;
+      z-index: 1;
+  }
+  
+  
+  .nav_btn_back:hover {
+      color: red;
+  }
+  
+  .nav_bar_home_btn:hover {
+      color: darkcyan;
+  }
+  
+  
+  .nav_bar_advent_btn:hover {
+      color: darkcyan;
+  }
+  
+  
+  .nav_bar_snow_btn:hover {
+      color: darkcyan;
+  }
+  
+/*
+  .nav_bar_effects {
+    position: relative;
+    z-index: 20; 
+    box-shadow: 
+        0px 1px 2px rgba(0, 255, 255, 0.5),
+        0px 2px 4px rgba(0, 255, 255, 0.5),
+        0px 4px 8px rgba(0, 255, 255, 0.5),
+        0px 8px 16px rgba(0, 255, 255, 0.5) !important;
+  }
+*/
+  
+  
+  
+  
+  .contributor_btn_back {
+      background-color: #4CAF50; /* Tailwind green */
+      color: white; /* Text color */
+      padding: 0.5rem 1rem; /* Padding similar to Tailwind's p-2.5 and p-4 */
+      border-radius: 0.375rem; /* Rounded corners, like Tailwind's rounded-md */
+      border: none; /* Remove default border */
+      font-size: 1rem; /* Tailwind's text-base */
+      cursor: pointer; /* Cursor pointer on hover */
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for background and transform */
+      position: relative; /* Ensure it stays within the container */
+      margin: 20px auto; /* Center the button and add space */
+      display: inline-block; /* Prevent button from taking full width */
+      z-index: 5; /* Ensure it's above other elements */
+  }
+  
+  @media (max-width: 768px) {
+    .contributor_btn_back {
+      position: relative;
+      padding-bottom: 50px; /* Extra space to ensure button doesn't overlap footer */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contributor_btn_back {
+      position: relative;
+      padding-bottom: 50px; /* Extra space to ensure button doesn't overlap footer */
+    }
+  }
+  
+  .contributor_btn_back:hover {
+      background-color: #45a049; /* Slightly darker green for hover */
+      transform: translateY(-2px); /* Lift effect on hover */
+  }
+  
+  .contributor_btn_back:focus {
+      outline: none; /* Remove default focus outline */
+      box-shadow: 0 0 0 2px rgba(72, 155, 72, 0.5); /* Add a green focus shadow */
+  }
+  
+  
+  /* Ensure button placement doesn't clash with footer */
+  .contributor_section {
+      padding-bottom: 100px; /* Add padding to avoid overlap with footer */
+      position: relative;
+  }
+  
+  
+  
+  .contributor_cards_container {
+      display: flex;
+      justify-content: center;
+  }
+  
+  
+  .contributor_card {
+      padding: 20px;
+      background-color: rgb(255, 255, 255);
+  }
+  
+  .contributor_title {
+      display: flex;
+      justify-content: center;
+      font-size: 45px;
+      font-weight: bold;
+      color: #45a049;
+  }
+  
+  .contributor_text {
+      display: flex;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+  }
+  
+  .contributor_images {
+      height: 250px;
+      width: 300px;
+  }
+  
+  
+  
+  .contributor_cards_container {
+      display: flex;
+      flex-wrap: wrap; /* Allow wrapping for responsiveness */
+      justify-content: center;
+      gap: 20px; /* Add spacing between the cards */
+      margin: 20px auto; /* Center the container with margin */
+      max-width: 1200px; /* Optional: set a max width for better control */
+  }
+  
+  .contributor_card_man {
+      flex: 1 1 calc(33.333% - 20px); /* Three cards per row with gaps */
+      max-width: calc(33.333% - 20px); /* Maintain three cards per row */
+      box-sizing: border-box; /* Ensure padding doesn't affect width */
+      padding: 20px;
+      background-color: #f8f9fa; /* Optional: background for cards */
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .contributor_card_man:hover {
+      transform: scale(1.05);
+      box-shadow: 
+          0px 1px 2px rgba(0, 255, 255, 0.5), 
+          0px 2px 4px rgba(0, 255, 255, 0.5), 
+          0px 4px 8px rgba(0, 255, 255, 0.5), 
+          0px 8px 16px rgba(0, 255, 255, 0.5);
+  }
+  
+  
+  .contributor_card_woman {
+    flex: 1 1 calc(33.333% - 20px); /* Three cards per row with gaps */
+    max-width: calc(33.333% - 20px); /* Maintain three cards per row */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    padding: 20px;
+    background-color: #f8f9fa; /* Optional: background for cards */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .contributor_card_woman:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0px 1px 2px rgba(251, 0, 255, 0.5), 
+        0px 2px 4px rgba(172, 2, 228, 0.5), 
+        0px 4px 8px rgba(168, 2, 239, 0.5), 
+        0px 8px 16px rgba(158, 2, 231, 0.5);
+  }
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+      .contributor_card_man {
+          flex: 1 1 calc(50% - 20px); /* Two cards per row */
+          max-width: calc(50% - 20px);
+      }
+  }
+  
+  @media (max-width: 768px) {
+      .contributor_card_man {
+          flex: 1 1 calc(100% - 20px); /* One card per row */
+          max-width: calc(100% - 20px);
+      }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .contributor_card_woman {
+        flex: 1 1 calc(50% - 20px); /* Two cards per row */
+        max-width: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contributor_card_woman {
+        flex: 1 1 calc(100% - 20px); /* One card per row */
+        max-width: calc(100% - 20px);
+    }
+  }
+  
+  
+  
+  /* Hintergrundfarbe des Himmels */
+  .bg-dark-blue {
+      background-color: white;
+  }
+  
+  /* Tree Images Styling with Static Glow */
+  .tree {
+    height: 40vh;
+
+
+  
+    /* Simplified and optimized glowing effect */
+    filter: brightness(1.3) 
+            drop-shadow(0 0 20px rgba(255, 0, 0, 0.5)) /* Red */
+            drop-shadow(0 0 30px rgba(0, 255, 0, 0.4)) /* Green */
+            drop-shadow(0 0 40px rgba(0, 0, 255, 0.3)); /* Blue */
+  }
+  .trees {
+    display:flex;
+    justify-content:space-evenly;
+    align-items:end;
+    width:100%;
+    position:absolute;
+    bottom:6vh;
+    gap:67px;
+    opacity:1;
+    z-index:-1000;
+  }
+  
+  
+  /* Schnee-Hügel im Hintergrund */
+  .snow-hills {
+      background: white;
+      position: absolute;
+      width: 100%;
+      height: 100px;
+      bottom: 0;
+      z-index: 5;
+      border-radius: 40% 40% 0 0;
+      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5);
+      transform: scaleY(0.5);
+  }
+  nav {
+    border-radius: 0 0 40% 40%;
+    width:100%;
+  }
+  
+  /* Sterne im Hintergrund (weniger, größere und unregelmäßige Sterne mit stärkeren Glüheffekten) */
+  .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 3px, transparent 3px);
+      background-size: 300px 300px; /* Weniger und größere Abstände zwischen den Sternen */
+      background-position:
+          3% 5%,
+          12% 22%,
+          30% 40%,
+          50% 25%,
+          62% 15%,
+          80% 55%,
+          70% 70%,
+          90% 35%,
+          25% 80%; /* Zufällige Positionen für unregelmäßige Verteilung */
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); /* Stärkerer Glüheffekt */
+  }
+  
+  
+  /* Stil für den Titel */
+  .text-white {
+      color: #fff;
+      font-size: 3rem; /* Optional, falls du den Text größer haben möchtest */
+      font-weight: bold;
+  }
+  
+  /* Footer fixiert am unteren Rand */
+  footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      font-size: 0.8rem; /* Kleinere Schriftgröße für den Footer */
+      color: #fff; /* Weiß für den Footer-Text */
+      text-align: center;
+      padding: 10px 20px 10px 20px; /* Optionale Polsterung */
+  }
+  
+  /* Schriftgröße der a-Tag im Footer auf medium setzen */
+  footer a, span {
+      font-size: medium; /* Mittelgroße Schriftgröße für Links im Footer */
+      color: black; /* Weiß für den Link-Text */
+      text-decoration: none; /* Entfernt die Unterstreichung */
+  }
+  
+  footer a:hover {
+      text-decoration: underline; /* Optional: Unterstreichung bei Hover */
+  }
+  .message-header a:hover {
+    color:red;
+  }
+  .message-header a {
+  color: blue;text-decoration: underline;
+  }
+  
+  /* Advent Tree Section Styling */
+  .main {
+      background-color: #ffffff;
+      padding: 2rem;
+    }
+    
+    .text-green-500 {
+      color: #38a169;
+    }
+    
+    .text-lg {
+      font-size: 1.125rem;
+    }
+    
+    .text-gray-700 {
+      color: #4a5568;
+    }
+    
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    
+    .bg-blue-200 {
+      background-color: #bee3f8;
+    }
+    
+    .text-blue-800 {
+      color: #2b6cb0;
+    }
+    
+    .hover\:bg-blue-300:hover {
+      background-color: #93c5fd;
+    }
+  
+  
+    /* Add any additional styles if needed */
+  .contributor_card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+.red:hover {
+    color:red;
+}
+
+  /* General glow effect */
+  .contributor_card:hover {
+    transform: scale(1.05);
+    box-shadow: 
+      0px 1px 2px rgba(0, 255, 255, 0.5), 
+      0px 2px 4px rgba(0, 255, 255, 0.5), 
+      0px 4px 8px rgba(0, 255, 255, 0.5), 
+      0px 8px 16px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* Pink glow effect for the 3rd card */
+  .hover\:shadow-pink-glow:hover {
+    box-shadow: 
+      0px 1px 2px rgba(255, 105, 180, 0.5), 
+      0px 2px 4px rgba(255, 105, 180, 0.5), 
+      0px 4px 8px rgba(255, 105, 180, 0.5), 
+      0px 8px 16px rgba(255, 105, 180, 0.5);
+  }
+  
+  
+  .banner-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .home_welcome {
+      position: relative;
+      z-index: 1; /* Keep the text above the banner */
+      text-align: center;
+      font-size: 3rem; /* Adjust font size as needed */
+    }
+    
+    .banner {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%; /* Adjust size as needed */
+      height: auto;
+      z-index: 0; /* Place it behind the navbar */
+      opacity: 0.8; /* Optional: Slight transparency for better visibility of the nav */
+    }
+    
+    /* Responsive Styles */
+  @media (max-width: 1203px) {
+      /* Switch from 3 trees to 2 trees */
+      
+      .tree.left {
+          left: none;
+      }
+      .tree.right {
+          right: none;
+      }
+  
+      /* Navbar adjustments */
+      .nav_bar {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+      }
+  }
+  
+  @media (max-width: 768px) {
+      /* Switch from 2 trees to 1 tree */
+      .tree.left, .tree.right {
+          display: none;
+      }
+      .tree.middle {
+          display: block;
+          height: 80vh;
+      }
+  
+      /* Adjust navbar to burger menu */
+      .nav_bar {
+          display: none; /* Hide the nav bar */
+      }
+      .burger-menu {
+          display: block;
+          position: fixed;
+          top: 15px;
+          right: 15px;
+          z-index: 20;
+      }
+  
+      /* Show menu on toggle */
+      .nav_bar.open {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 50px;
+          right: 10px;
+          background: #001d2d;
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+          padding: 10px;
+          gap: 10px;
+          border-radius: 5px;
+      }
+  }
+  
+  @media (max-width: 480px) {
+      /* General font size adjustments for smaller screens */
+      a, .home_welcome {
+          font-size: small;
+      }
+  
+      
+  }
+  
+  
+  .burger-menu {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 30; /* Ensure it is in front of other elements */
+    }
+    
+    .burger-menu:focus {
+      outline: none;
+    }
+    
+    @media (max-width: 768px) {
+      .burger-menu {
+        display: block;
+      }
+    
+      .nav_bar {
+        display: none;
+      }
+    
+      .nav_bar.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        background: #001d2d;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        gap: 10px;
+        border-radius: 5px;
+        z-index: 30; /* Ensure dropdown is in front */
+      }
+    }
+    
+    .nav_bar_effects {
+      position: relative;
+      z-index: 20; /* Keep the navbar in front */
+    }
+  
+    
+  /* Snow Container */
+  .snow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    
+    /* Snowflake Styling */
+    .snowflake {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+    }
+  
+  
+    
+  /* Styling für das Banner-Container */
+  .banner-container {
+      position: relative;
+      width: 100%;
+      height: 200px; /* Höhe des Containers für das Banner */
+      margin-top: 50px; /* Abstand von der Navigation */
+      z-index: 10; /* Über Sterne und Hintergrund, aber unter dem Text */
+    }
+    
+    /* Styling für das Banner */
+    .banner {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%; /* Bannergröße anpassen */
+      height: 122%;
+      opacity: 0.8; /* Banner leicht transparent */
+      z-index: 5; /* Hinter dem Titel */
+    }
+    
+    /* Styling für den Titel */
+    .home_welcome_home {
+      position: absolute;
+      color: white;
+      font-size: 42px;
+      font-weight: bold;
+      text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+      z-index: 20; /* Sicherstellen, dass der Text vor dem Banner ist */
+      top: 63%; /* Vertikal zentrieren */
+      left: 50%; /* Horizontal zentrieren */
+      transform: translate(-50%, -50%);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .banner-container {
+        height: 180px;
+      }
+    
+      .banner {
+        top: -300px;
+        width: 90%; /* Banner slightly wider for larger viewports */
+      }
+    
+      .home_welcome {
+        font-size: 2.2rem;
+        top: 35%;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .banner-container {
+        height: 150px;
+      }
+    
+      .banner {
+        top: -250px;
+        width: 95%; /* Adjust banner size for medium screens */
+      }
+    
+      .home_welcome {
+        font-size: 2rem;
+        top: 37%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .banner-container {
+        height: 120px;
+      }
+    
+      .banner {
+        top: -200px;
+        width: 100%; /* Full width for smaller screens */
+      }
+    
+      .home_welcome {
+        font-size: 1.8rem;
+        top: 40%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .banner-container {
+        height: 100px;
+      }
+    
+      .banner {
+        top: -180px;
+        width: 100%; /* Full width for smaller screens */
+      }
+    
+      .home_welcome {
+        font-size: 1.5rem;
+        top: 42%;
+        text-align: center;
+        padding: 0 10px; /* Ensure no text overflow */
+      }
+    }
+     
+  
+  
+  
+  
+  
+  
+  
+  
+  
